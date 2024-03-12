@@ -15,6 +15,7 @@ import { FcHome } from "react-icons/fc";
 import { query, where } from "firebase/firestore";
 import ListingItem from "../components/ListingItem";
 
+
 export default function Profile() {
   const auth = getAuth();
   const navigate = useNavigate();
