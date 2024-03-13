@@ -12,11 +12,14 @@ import {
   Autoplay,
 } from "swiper/modules";
 import "swiper/css/bundle";
+import { FaRegCopy } from "react-icons/fa";
+
 
 const Listing = () => {
   const params = useParams();
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [shareLinkCopy, setShareLinkCopy] = useState(false);
   SwiperCore.use([Navigation, Pagination, Autoplay]);
 
   useEffect(() => {
@@ -43,6 +46,18 @@ const Listing = () => {
 
         </SwiperSlide>))}
       </Swiper>
+      <div className="fixed top-[13%] right-[3%] z-10 bg-white cursor-pointer border- border-gray-400 rounded-full w-12 h-12 flex justify-center items-center" onClick={()=>{
+        navigator.clipboard.writeText(window.location.href);
+        setShareLinkCopy(true);
+        setTimeout(()=>{
+          setShareLinkCopy(false);
+        }, 2000);
+      }}>
+        <FaRegCopy className="text-lg text-slate-500" />
+      </div>
+      {shareLinkCopy && (
+        <p className="fixed top-[23%] right-[5%] font-semibold bg-white z-10 p-2 rounded-full">Link copied</p>
+      )}
     </main>
   );
 };
