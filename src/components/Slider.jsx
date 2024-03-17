@@ -59,11 +59,18 @@ export default function Slider() {
                 }}
                 className="relative w-[1400px] h-[400px] overflow-hidden mx-auto"
               ></div>
-              <p className="text-[#f1faee] absolute left-1 top-3 font-medium max-w-[90%] bg-[#457b9d] shadow-lg opacity-90 p-2 rounded-br-3xl">
+              <p className="text-[#f1faee] absolute left-[260px] top-3 font-medium max-w-[90%] bg-[#457b9d] shadow-lg opacity-90 p-2 rounded">
                 {data.name}
               </p>
-              <p className="text-[#f1faee] absolute left-1 bottom-1 font-semibold max-w-[90%] bg-[#e63946] shadow-lg opacity-90 p-2 rounded-tr-3xl">
-                ${data.discountedPrice ?? data.regularPrice}
+
+
+              <p className="text-[#f1faee] absolute right-[260px] top-3 font-semibold max-w-[90%] bg-[#1f2020] shadow-lg opacity-90 p-2 rounded">
+                {data.type.toUpperCase()}: 
+                ${data.discountedPrice?.toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                
+                ?? data.regularPrice.toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 {data.type === "rent" && " / month"}
               </p>
             </SwiperSlide>
